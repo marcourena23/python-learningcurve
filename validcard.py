@@ -24,6 +24,7 @@ MasterCard 5105105105105100
 Visa 4111111111111111
 Visa 4012888888881881
 '''
+
 import string
 digits = string.digits
 total_odd = 0
