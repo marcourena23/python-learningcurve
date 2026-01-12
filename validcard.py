@@ -27,8 +27,6 @@ Visa 4012888888881881
 
 import string
 digits = string.digits
-punctuation = string.punctuation
-letters = string.ascii_letters
 total_odd = 0
 total_par = 0
 #two_digits = 0
@@ -36,18 +34,8 @@ sum_two_digits = []
 n = 0
 
 # 1. Remove any '-' or ' '
-'''def clean_credit_card_number(credit_card_number):
-    for digit in credit_card_number:
-        if digit not in digits:
-            # get index
-            index = credit_card_number.index(digit)
-            # pop() - remove caracter on index specified  
-            credit_card_number.pop(index)
-    return credit_card_number'''
-
-# 1. Remove any '-' or ' '
 def cleanCreditCardNumber(credit_card_number):
-    cleanedCreditCard = [digit for digit in credit_card_number if digit in digits]
+    cleanedCreditCard = [digit for digit in credit_card_number if digit in digits] # add only digits to new list
     return cleanedCreditCard
 '''
 def add_odd_numbers(credit_card_number):
@@ -81,7 +69,7 @@ def is_valid():
 # Get credit card number
 credit_card_number = list(input("Enter your credit card number: "))
 
-cleanedCreditCard = clean_credit_card_number(credit_card_number) # clean other innecesary characters
+cleanedCreditCard = cleanCreditCardNumber(credit_card_number) # clean other innecesary characters
 print(cleanedCreditCard)
 
 '''
