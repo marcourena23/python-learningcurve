@@ -27,9 +27,7 @@ Visa 4012888888881881
 
 import string
 digits = string.digits
-total_odd = 0
 total_par = 0
-#two_digits = 0
 sum_two_digits = []
 n = 0
 
@@ -37,14 +35,17 @@ n = 0
 def cleanCreditCardNumber(credit_card_number):
     cleanedCreditCard = [digit for digit in credit_card_number if digit in digits] # add only digits to new list
     return cleanedCreditCard
-'''
-def add_odd_numbers(credit_card_number):
-    for digit in credit_card_number[::-1]:
-        index = credit_card_number.index(digit)
-        if index % 2 != 0:
-            total_odd += credit_card_number.index(digit)
 
-def add_par_number(credit_card_number):
+# 2. Sum all digits in the odd places from right to left
+def sumOddPlaces(credit_card_number):
+    total_odd = 0
+    odd = [digit for digit in credit_card_number[::-2]]
+    for num in odd:
+        total_odd += int(num)
+    return total_odd
+
+# 3 Add all digits in the pair places from right to left (If result is a two-digit number, add the two-digit number together to get a single digit.)
+def sumPairPlaces(credit_card_number):
     for digit in credit_card_number[::-1]:
         index = credit_card_number.index(digit)
         if index % 2 == 0:
@@ -55,22 +56,20 @@ def add_par_number(credit_card_number):
 
 
 def add_two_digits():
-    for digit in credit_card_number[::-1]:
-        pass
+    pass
 
 def sum_total():
     pass
 
 def is_valid():
     pass
-'''
 
 # main
 # Get credit card number
 credit_card_number = list(input("Enter your credit card number: "))
 
 cleanedCreditCard = cleanCreditCardNumber(credit_card_number) # clean other innecesary characters
-print(cleanedCreditCard)
+totalOdd = sumOddPlaces(cleanedCreditCard)
 
 '''
 for digit in credit_card_number[::-1]:
