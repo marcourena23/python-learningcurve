@@ -27,9 +27,6 @@ Visa 4012888888881881
 
 import string
 digits = string.digits
-total_par = 0
-sum_two_digits = []
-n = 0
 
 # 1. Remove any '-' or ' '
 def cleanCreditCardNumber(credit_card_number):
@@ -40,37 +37,32 @@ def cleanCreditCardNumber(credit_card_number):
 def sumOddPlaces(credit_card_number):
     total_odd = 0
     odd = [digit for digit in credit_card_number[::-2]]
-    print(odd)
     for num in odd:
         total_odd += int(num)
-        print(total_odd)
     return total_odd
 
 # 3 Add all digits in the pair places from right to left (If result is a two-digit number, add the two-digit number together to get a single digit.)
 def sumPairPlaces(credit_card_number):
+    sum_two_digits = 0
     total_pair = 0
-    pair = [int(digit) for digit in credit_card_number[-2::-2]]
-    print(pair)
-    for p in pair:
-        print(p)
+    pair = [int(digit) * 2 for digit in credit_card_number[-2::-2]]
+    for number in pair:
+        if number >= 10:
+            sum_two_digits = (number // 10) + (number % 10) # // integer division
+            total_pair += sum_two_digits
+        else:
+            total_pair += number
+    return total_pair
 
-'''
-list =  12345678
-index = 012345
-odd = 2+4+6+8 = 20
-par = 1+3+5+7 = 15
-'''
-
-def add_two_digits():
-    pass
-
+# 4 Sum the totals of steps 2 & 3
 def sum_total():
     pass
 
+# 5 If sum is divisible by 10, the credit card # is valid
 def is_valid():
     pass
 
-# main
+# Market: Main program
 # Get credit card number
 credit_card_number = list(input("Enter your credit card number: "))
 
@@ -78,22 +70,3 @@ cleanedCreditCard = cleanCreditCardNumber(credit_card_number) # clean other inne
 totalOdd = sumOddPlaces(cleanedCreditCard)
 sumOddPlaces(credit_card_number)
 sumPairPlaces(cleanedCreditCard)
-
-'''
-for digit in credit_card_number[::-1]:
-        index = credit_card_number.index(digit)
-        if index % 2 != 0:
-            total_odd += credit_card_number.index(digit)
-print(total_odd)
-
-
-for digit in credit_card_number[::-1]:
-        index = credit_card_number.index(digit)
-        if index % 2 == 0:
-            two_digits += credit_card_number.index(digit)
-            if two_digits >= 10:
-                sum_two_digits: int = two_digits
-                n = sum_two_digits[0] + sum_two_digits[1]
-
-print(n)
-'''
