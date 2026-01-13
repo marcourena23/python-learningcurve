@@ -55,18 +55,20 @@ def sumPairPlaces(credit_card_number):
     return total_pair
 
 # 4 Sum the totals of steps 2 & 3
-def sum_total():
-    pass
+def sum_total(total_odd, total_pair):
+    return total_odd + total_pair
 
 # 5 If sum is divisible by 10, the credit card # is valid
-def is_valid():
-    pass
+def is_valid(total):
+    return total % 10 == 0
 
 # Market: Main program
 # Get credit card number
 credit_card_number = list(input("Enter your credit card number: "))
 
 cleanedCreditCard = cleanCreditCardNumber(credit_card_number) # clean other innecesary characters
-totalOdd = sumOddPlaces(cleanedCreditCard)
-sumOddPlaces(credit_card_number)
-sumPairPlaces(cleanedCreditCard)
+total = sum_total(sumOddPlaces(cleanedCreditCard), sumPairPlaces(cleanedCreditCard))
+if is_valid(total):
+    print("The credit card number is valid.")
+else:
+    print("The credit card number is invalid.")
