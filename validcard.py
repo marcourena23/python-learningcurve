@@ -40,20 +40,26 @@ def cleanCreditCardNumber(credit_card_number):
 def sumOddPlaces(credit_card_number):
     total_odd = 0
     odd = [digit for digit in credit_card_number[::-2]]
+    print(odd)
     for num in odd:
         total_odd += int(num)
+        print(total_odd)
     return total_odd
 
 # 3 Add all digits in the pair places from right to left (If result is a two-digit number, add the two-digit number together to get a single digit.)
 def sumPairPlaces(credit_card_number):
-    for digit in credit_card_number[::-1]:
-        index = credit_card_number.index(digit)
-        if index % 2 == 0:
-            two_digits += credit_card_number.index(digit)
-            if two_digits >= 10:
-                sum_two_digits = two_digits
-                n = sum_two_digits[0] + sum_two_digits[1]
+    total_pair = 0
+    pair = [int(digit) for digit in credit_card_number[-2::-2]]
+    print(pair)
+    for p in pair:
+        print(p)
 
+'''
+list =  12345678
+index = 012345
+odd = 2+4+6+8 = 20
+par = 1+3+5+7 = 15
+'''
 
 def add_two_digits():
     pass
@@ -70,6 +76,8 @@ credit_card_number = list(input("Enter your credit card number: "))
 
 cleanedCreditCard = cleanCreditCardNumber(credit_card_number) # clean other innecesary characters
 totalOdd = sumOddPlaces(cleanedCreditCard)
+sumOddPlaces(credit_card_number)
+sumPairPlaces(cleanedCreditCard)
 
 '''
 for digit in credit_card_number[::-1]:
