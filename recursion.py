@@ -13,3 +13,9 @@ def walk(steps):
 walk(10)
 
 
+# RECURSIVE
+def walk(steps):
+    if steps > 0:
+        print('taking a step')
+        walk(steps - 1)
+walk(10)
